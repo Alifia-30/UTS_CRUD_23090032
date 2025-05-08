@@ -27,10 +27,18 @@ public class CRUD_23090032_B_2025 {
             MongoDatabase DB = mongo.getDatabase("uts_23090032_B_2025");
             MongoCollection<Document> collection = DB.getCollection("coll_23090032_B_2025");
             //menambahkan 3 data (document)
-            Document product = new Document("nama", "alifiashasa") //string
+            Document product1 = new Document("nama", "alifiashasa") //string
                     .append("warna", Arrays.asList("white", "black", "pink")) //list
                     .append("umur", 21); //ineteger
-            collection.insertOne(product);
+            
+            Document product2 = new Document("merk", "laptop") //string
+                    .append("warna", Arrays.asList("white", "black")) //list
+                    .append("quantity", 50); //ineteger
+   
+            Document product3 = new Document("nama", "sepatu") //string
+                    .append("warna", Arrays.asList("white", "black", "ungu")) //list
+                    .append("quantity", 33); //ineteger
+            collection.insertMany(Arrays.asList(product1, product2, product3));
             //update data
             Bson filter = Filters.eq("nama", "alifiashasa"); // Membuat filter untuk mencari dokumen dengan nama = "alifiashasa"
             Bson update = Updates.set("kelas", "4B"); // Membuat update untuk menambahkan/menetapkan field "kelas" dengan nilai "4B"
